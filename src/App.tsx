@@ -1,12 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import { FC, useEffect } from 'react';
+
+// css
 import './App.css';
 
-function App() {
+// redux
+import { useAppDispatch } from "./hooks/redux.hooks";
+
+// actions
+import { loginAction } from "./redux/actions/auth.actions";
+
+const App: FC = () => {
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() =>{
+    dispatch( loginAction() );
+  }, [dispatch])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -21,6 +34,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;

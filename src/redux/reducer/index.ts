@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { createReducer, createSlice  } from '@reduxjs/toolkit';
+// import { createReducer, createSlice  } from '@reduxjs/toolkit';
 
 
 // REDUCERS //
-// import authReducer from 'redux/reducers/authReducer';
+import authReducer from '../reducer/auth.reducer';
 // import filesReducer from 'redux/reducers/filesReducer';
 
 export default combineReducers ({
-    // user: authReducer,
+    user: authReducer,
     // files: filesReducer,
 });

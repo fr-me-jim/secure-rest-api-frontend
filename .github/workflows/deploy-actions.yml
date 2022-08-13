@@ -1,0 +1,83 @@
+name: ci-cd-frontend
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+  push:
+    branches:
+      - 'main'
+jobs:
+  build-deploy-react-app:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - uses: actions/checkout@v3
+      - 
+        name: Make .env file
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          file_name: .env
+          fail_on_empty: true
+          envkey_PORT: test
+          # envkey_DB_PORT: ${{ secrets.PG_DB_PORT }}
+          # envkey_DB_USERNAME: ${{ secrets.PG_DB_USERNAME }}
+          # envkey_DB_PASSWORD: ${{ secrets.PG_DB_PASSWORD }}
+          # envkey_DB_HOST: ${{ secrets.PG_DB_HOST }}
+          # envkey_DB_NAME: ${{ secrets.PG_DB_NAME }}
+          # envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          # envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          # envkey_JWT_ALG: ${{ secrets.JWT_ALORITHM }}
+          # envkey_JWT_EXPIRATION: ${{ secrets.JWT_EXPIRATION }}
+          # envkey_JWT_ISSUER: ${{ secrets.JWT_ISSUER }}
+          # envkey_JWT_AUDIENCE: ${{ secrets.JWT_AUDIENCE }}
+          # envkey_JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          # envkey_COOKIE_SIGNATURE: ${{ secrets.COOKIE_SIGNATURE }}
+          
+      - 
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+      -
+        name: Install node modules
+        run: npm i
+      -
+        name: Login to DockerHub
+        run: npm run build
+      -
+        name: Build and push
+        run: mv .env build
+      - 
+        name: Copy files to server 
+        uses: appleboy/scp-action@master
+        with:
+          overwrite: true
+          source: "build/**"
+          target: "/var/www/html"
+          key: ${{ secrets.SSH_KEY_SERVER }}
+          port: ${{ secrets.SSH_SERVER_PORT }}
+          host: ${{ secrets.SSH_SERVER_HOST }}
+          username: ${{ secrets.SSH_SERVER_USERNAME }}
+          passphrase: ${{ secrets.SSH_KEY_SERVER_PASSPHRASE }}
+          
+
+  start-app:
+    runs-on: ubuntu-latest
+    environment: Production
+    needs: [build-push-docker-image, deploy-app-files]
+    steps:
+      - 
+        name: Restart Nginx Webserver
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SSH_KEY_SERVER }}
+          port: ${{ secrets.SSH_SERVER_PORT }}
+          host: ${{ secrets.SSH_SERVER_HOST }}
+          username: ${{ secrets.SSH_SERVER_USERNAME }}
+          passphrase: ${{ secrets.SSH_KEY_SERVER_PASSPHRASE }}
+          script: |
+            cd secure-rest-api
+            docker-compose restart nginx
