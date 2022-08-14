@@ -22,7 +22,7 @@ export const loginAction = createAsyncThunk<IAuthUserData>(AUTH_LOGIN, async () 
     } catch (error: unknown) {
         throw error ;
     }
-}, {  });
+});
 // export const loginActionFail = createAction(AUTH_LOGIN_FAIL);
 // export const loginActionSuccess = createAction<IAuthUserData>(AUTH_LOGIN_SUCCESS);
 
