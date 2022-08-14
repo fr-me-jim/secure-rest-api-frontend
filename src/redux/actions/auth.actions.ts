@@ -16,7 +16,7 @@ export const loginAction = createAsyncThunk<IAuthUserData>(AUTH_LOGIN, async () 
         const response = await axios.post('https://tfm.jediupc.com/api/auth/login', {
             email: 'admin@gmail.com',
             password: 'EP65rqpqbuz>:3)oV#XEAr^:|>=tx/nO'
-        }, { headers: { 'Content-Type': 'application/json', 'Origin':'localhost:3000' } });
+        }, { headers: { 'Content-Type': 'application/json' } });
 
         return response.data;
     } catch (error: unknown) {
