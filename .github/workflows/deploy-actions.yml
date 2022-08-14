@@ -67,7 +67,7 @@ jobs:
   start-app:
     runs-on: ubuntu-latest
     environment: Production
-    needs: [build-push-docker-image, deploy-app-files]
+    needs: build-deploy-react-app
     steps:
       - 
         name: Restart Nginx Webserver
