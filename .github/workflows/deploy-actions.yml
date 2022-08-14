@@ -45,10 +45,10 @@ jobs:
         name: Install node modules
         run: npm i
       -
-        name: Login to DockerHub
+        name: Build App
         run: npm run build
       -
-        name: Build and push
+        name: Add .env to build
         run: mv .env build
       - 
         name: Copy files to server 
