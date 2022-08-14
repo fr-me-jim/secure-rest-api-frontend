@@ -23,16 +23,16 @@ const authReducer: Slice<IAuthInitialState> = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(loginAction.pending, (state, _action) => {
-            state.loading = true
-        }),
+            state.loading = true;
+        });
         builder.addCase(loginAction.rejected, (state, _action) => {
-            state.loading = false,
-            state.error = true
-        }),
+            state.loading = false;
+            state.error = true;
+        });
         builder.addCase(loginAction.fulfilled, (state, action) => {
-            state.loading = false,
-            state.data = action.payload
-        })
+            state.loading = false;
+            state.data = action.payload;
+        });
     }
 });
 
