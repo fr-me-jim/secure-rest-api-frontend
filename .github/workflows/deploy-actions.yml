@@ -56,7 +56,7 @@ jobs:
         with:
           overwrite: true
           source: "build/**"
-          target: "/var/www/html"
+          target: "secure-rest-api-frontend"
           key: ${{ secrets.SSH_KEY_SERVER }}
           port: ${{ secrets.SSH_SERVER_PORT }}
           host: ${{ secrets.SSH_SERVER_HOST }}
