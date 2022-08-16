@@ -1,0 +1,313 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --primary-color: #2b6ca7 !important;
+  --primary-color-hover: #245583 !important;
+  --secondary-color: #FFFFFF !important;
+  /* --danger-color: #ca536d;
+  --danger-color-hover: #b3475f; */
+  --danger-color: #a82f49 !important;
+  --danger-color-hover: #91283f !important;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Sweetalert z-index priority fix */
+.swal2-shown.swal2-height-auto {
+  height: 100% !important;
+}
+
+.swal2-container {
+  z-index: 1101 !important;
+}
+
+
+/* CUSTOM SCROLLBAR */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  max-height: 40%;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color-hover);
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* -- UTILS -- */
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-danger {
+  color: var(--danger-color) !important;
+}
+
+.centered-alert {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-icon { margin-left: 4px; }
+
+/* APP CSS */
+#root {
+  min-height: 100vh;
+  background-color: rgba(209, 211, 212, 0.816);
+}
+
+/* NAV LLINKS - NAVBAR / ADMIN / PROFILE */
+.nav-link {
+  padding: .5rem;
+  text-decoration: none !important;
+  color: var(--primary-color) !important;
+}
+
+.nav-link:hover, 
+.nav-link:active, 
+.nav-link:focus {
+  text-decoration: none !important;
+  color: var(--primary-color) !important;
+}
+
+.nav-link-text {
+  padding-top: 8px;
+  padding-bottom: 4px;
+  color: var(--primary-color) !important;
+  border-bottom: 3px solid #2b6ba700 !important;
+}
+
+.nav-link-text:hover, 
+.nav-link-text:active, 
+.nav-link-text:focus {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.main-header a.active .nav-link-text,
+.side-nav > a.active .nav-link-text {
+  text-decoration: none !important;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.main-wrapper {
+  min-height: calc(100vh - 125px);
+}
+
+/* MAIN WRAPPER COMPONENT */
+.main-routes-wrapper {
+  flex: 100;
+  padding: 8px;
+}
+
+.main-spacing-offset {
+  width: 100%;
+  margin: 0;
+} 
+
+/* INPUTS & BUTTONS */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.app-btn-primary,
+.app-btn-danger,
+.app-btn-search {
+  padding: 8px;
+  text-align: center;
+  border-radius: 4px; 
+  text-decoration: none;
+  min-width: auto !important;
+}
+
+/* PAGINATION BASE CSS */
+.pagination-btn {
+  padding: 0 6px !important;
+  min-width: 32px !important;
+}
+
+.app-btn-primary,
+.app-btn-danger {
+  color: var(--secondary-color) !important;
+  background-color: var(--primary-color) !important;
+}
+
+.app-btn-danger {
+  background-color: var(--danger-color) !important;
+}
+
+.app-btn-search {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
+}
+
+.app-btn-primary:hover,
+.app-btn-primary:focus {
+  text-decoration: none;
+  background-color: var(--primary-color-hover) !important;
+}
+
+.app-btn-danger:hover,
+.app-btn-danger:focus {
+  text-decoration: none;
+  background-color: var(--danger-color-hover) !important;
+}
+
+.app-btn-search:hover,
+.app-btn-search:focus,
+.app-btn-search.Mui-selected {
+  text-decoration: none;
+  color: var(--secondary-color) !important;
+  background-color: var(--primary-color) !important;
+}
+
+.app-btn-primary:focus,
+.app-btn-danger:focus,
+.app-btn-search:focus {
+  outline: none !important;
+}
+
+/* FORMS BASE CSS */
+label {
+  font-size: 1.5em;
+  padding: 8px 0;
+}
+
+label.mandatory {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mandatory span {
+  color: #ff0000;
+}
+
+input.auth-input,
+textarea.auth-input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #2b6ba752;
+  background-color: transparent;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1em;
+}
+
+input[type="color"].auth-input {
+  width: 100%;
+}
+
+input.auth-input:hover, 
+input.auth-input:focus, 
+textarea.auth-input:focus {
+  border: none;
+  outline: none !important;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+/* ADMIN - PROFILE BASE CSS */
+.admin-section-header,
+.profile-section-header {
+  max-height: 60px;
+}
+
+.admin-section-content,
+.profile-section-content {
+  min-height: calc(100% - 60px);
+}
+
+.main-content-root {
+  width: 100%;
+  display: flex;
+  min-height: calc(100% - 16px);
+}
+
+.nav-aside {
+  border-right: 1px solid  hsla(200, 10%, 50%,100);
+}
+
+.admin-paper-wrapper,
+.profile-paper-wrapper {
+  display: flex;
+  width: 100%;
+  background-color: var(--secondary-color);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* ADMIN - PROFILE NAV CSS */
+.file-paper {
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+
+.file-delete-btn {
+  width: 50px;
+  position: absolute !important;
+  top: -15px !important;
+  right: -22px !important;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 960px) {
+  /* NAV LLINKS - NAVBAR / ADMIN / PROFILE */
+  .nav-link-text {
+    text-align: center;
+  }
+
+  .nav-text {
+    display: none;
+  }
+
+  .text-wrapper {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  /* NAV LLINKS - NAVBAR / ADMIN / PROFILE */
+  .nav-title {
+    font-size: 1.4rem !important;
+  }
+}
+

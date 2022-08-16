@@ -1,0 +1,66 @@
+/* MAIN NAVBAR CSS */
+.main-header {
+    min-height: 65px !important;
+}
+
+.toolbar {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.menu-button {
+    margin-right: 16px !important;
+}
+
+.title {
+    flex-grow: 1 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.title-link {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.title-link:hover,
+.title-link:active, 
+.title-link:focus {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+/* NAVBAR NAVIGATION CSS */
+.welcome-message {
+    color: var(--primary-color) !important;
+    padding-top: .25rem !important;
+    margin-right: 16px !important;
+    margin-left: 16px !important;
+}
+
+.collapse-container {
+    top: 56px;
+    left: 0px;
+    width: 100%;
+    position: absolute;
+    background-color: #FFFFFF;
+    box-shadow: 
+        0px 3px 4px 0px rgba(0,0,0,0.2), 
+        0px 1px 0px 0px rgba(0,0,0,0.14), 
+        0px 1px 0px 0px rgba(0,0,0,0.12) !important
+}
+
+.collapse-inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.collapse-inner-disabled {
+    display: flex;
+    align-items: center;
+}
+
+.collapse-instant-transition {
+    transition-duration: 0ms !important;
+}

@@ -1,37 +1,21 @@
-import { FC, useEffect, useCallback } from 'react';
+import { FC } from 'react';
+import { BrowserRouter as Router} from "react-router-dom";
+
 
 // css
-import './App.css';
+import './css/main.css';
 
-// redux
-import { useAppDispatch } from "./hooks/redux.hooks";
-
-// actions
-import { loginAction } from "./redux/actions/auth.actions";
+// components
+import Navbar from './components/layout/Navbar';
+import MainWrapper from './components/layout/MainWrapper';
 
 const App: FC = () => {
-
-  const dispatch = useAppDispatch();
-  // const { loading } = useAppSelector(state => state.user);
-  const login = useCallback(
-    () => { dispatch( loginAction() )},
-    [dispatch]
-  );
-  
-
-  useEffect(() =>{
-    const fetchData = () => login();
-    fetchData();
-  }, [login])
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+
+      <MainWrapper />
+    </Router>
   );
 };
 

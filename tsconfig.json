@@ -23,7 +23,10 @@
     "noUnusedLocals": true,
     "noEmit": true,
     "outDir": "./dist",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "src/*": ["./src/*"]
+    }
   },
   "include": [
     "src"

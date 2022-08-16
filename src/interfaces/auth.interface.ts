@@ -1,3 +1,12 @@
+export interface IAuthPayload {
+    user: IAuthUserData;
+    error: string | null;
+};
+
+export interface IAuthResponse {
+    user: IAuthUserData;
+    errorStatusMessage: string | null;
+};
 
 export interface IAuthUserData {
     id: string;
@@ -13,7 +22,13 @@ export interface IAuthUserData {
 export interface IAuthInitialState {
     data: IAuthUserData | null,
     error: boolean;
+    message: string | null;
     loading: boolean;
     isAdmin: boolean;
     isAuthenticated: boolean;
+};
+
+export interface ILoginUserCredentials {
+    email: string; 
+    password: string;
 };

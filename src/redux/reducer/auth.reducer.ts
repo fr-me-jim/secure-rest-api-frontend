@@ -12,6 +12,7 @@ import {
 const initialState: IAuthInitialState = {
     data: null,
     error: false,
+    message: null,
     loading: false,
     isAdmin: false,
     isAuthenticated: false
@@ -25,12 +26,15 @@ const authReducer: Slice<IAuthInitialState> = createSlice({
         builder.addCase(loginAction.pending, (state, _action) => {
             state.loading = true;
         });
-        builder.addCase(loginAction.rejected, (state, _action) => {
+        builder.addCase(loginAction.rejected, (state, action) => {
             state.loading = false;
             state.error = true;
+            state.message = action.error.message || null;
         });
         builder.addCase(loginAction.fulfilled, (state, action) => {
             state.loading = false;
+            state.isAuthenticated = true;
+            state.isAdmin = action.payload.privileges > 0;
             state.data = action.payload;
         });
     }

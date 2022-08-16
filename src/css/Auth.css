@@ -1,0 +1,19 @@
+/* AUTH BASE CSS */
+.auth-paper {
+    width: 100%;
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: var(--secondary-color);
+}
+
+.form-controls {
+    width: 50%;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 600px) {
+    .form-controls {
+        width: 100%;
+    }
+}
