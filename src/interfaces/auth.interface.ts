@@ -32,3 +32,11 @@ export interface ILoginUserCredentials {
     email: string; 
     password: string;
 };
+
+export interface ISigninUserData {
+    email: string; 
+    firstName: string;
+    secondName: string;
+    privileges: number;
+    password: string;
+};

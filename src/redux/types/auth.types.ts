@@ -1,3 +1,3 @@
 export const AUTH_LOGIN = "auth/loginAction";
-export const AUTH_LOGIN_SUCCESS = "AUTH_LOGIN_SUCCESS";
-export const AUTH_LOGIN_FAIL = "AUTH_LOGIN_FAIL";
+export const AUTH_SIGNIN = "auth/signinAction";
+export const AUTH_LOGOUT = "auth/logoutAction";

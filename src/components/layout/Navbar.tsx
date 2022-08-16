@@ -1,10 +1,10 @@
 // import React from 'react';
 // import { useCookies } from 'react-cookie';
 // import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // hooks
-import { useAppSelector } from "../../hooks/redux.hooks";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux.hooks";
 // axios
 // import axios from 'config/axios';
 
@@ -19,25 +19,26 @@ import Typography from '@mui/material/Typography';
 import '../../css/Navbar.css';
 
 // actions
-// import { logoutAction } from 'redux/actions/authActions';
+import { logoutAction } from '../../redux/actions/auth.actions';
 
 const Navbar = (): JSX.Element => {
 
     // hooks
-    // const history = useHistory();
+    const redirect = useNavigate();
     // const [ cookies, , removeCookie ] = useCookies();
 
     // get state
     const { isAdmin, isAuthenticated } = useAppSelector( state => state.user );
 
     // actions
-    // const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    // const logout = async () => dispatch( logoutAction() );
+    const logout = async () => await dispatch( logoutAction() );
 
     const handleLogOut = async () => {
-        // await logout();
+        await logout();
 
+        redirect("/");
         // // also delete session cookie
         // axios.defaults.headers.Authorization = '';
         // if(cookies.token) removeCookie('token', { path:'/', sameSite: 'lax', secure: true });

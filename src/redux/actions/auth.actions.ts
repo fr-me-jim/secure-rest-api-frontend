@@ -1,30 +1,51 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // interfaces
-import type { ILoginUserCredentials } from '../../interfaces/auth.interface';
+import type { ILoginUserCredentials, ISigninUserData } from '../../interfaces/auth.interface';
 
 // services
-import { postLoginCredentials } from "../../service/auth.services";
+import { 
+    postLoginService,
+    postSigninService,
+    getLogoutService
+} from "../../service/auth.services";
 
 // action types
 import { 
     AUTH_LOGIN,
-    // AUTH_LOGIN_SUCCESS,
-    // AUTH_LOGIN_FAIL
+    AUTH_SIGNIN,
+    AUTH_LOGOUT
 } from "../types/auth.types";
 
 export const loginAction = createAsyncThunk(
     AUTH_LOGIN, 
     async (userCredentials: ILoginUserCredentials) => {
         try {
-            return await postLoginCredentials(userCredentials.email, userCredentials.password);
+            return await postLoginService(userCredentials.email, userCredentials.password);
         } catch (error: unknown) {
             throw error;
         }
     }
 );
-// export const loginActionFail = createAction(AUTH_LOGIN_FAIL);
-// export const loginActionSuccess = createAction<IAuthUserData>(AUTH_LOGIN_SUCCESS);
 
+export const signinAction = createAsyncThunk(
+    AUTH_SIGNIN, 
+    async (userSigninData: ISigninUserData) => {
+        try {
+            return await postSigninService(userSigninData);
+        } catch (error: unknown) {
+            throw error;
+        }
+    }
+);
 
-
+export const logoutAction = createAsyncThunk(
+    AUTH_LOGOUT, 
+    async () => {
+        try {
+            await getLogoutService();
+        } catch (error: unknown) {
+            throw error;
+        }
+    }
+);

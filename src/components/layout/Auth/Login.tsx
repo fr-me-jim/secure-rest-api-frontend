@@ -61,8 +61,9 @@ const Login = (): JSX.Element => {
        try {
             const action = await login(email, password);
             console.log(action)
-            // if (action.error) {
+            // if (action.error!) {
             //     setErrForm(true);
+            //     setErrFormMessage(action.error.message)
             // }
        } catch (error: unknown) {
             console.log(error)
