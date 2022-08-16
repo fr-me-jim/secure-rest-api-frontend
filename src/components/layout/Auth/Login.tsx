@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 // import { useCookies } from 'react-cookie';
-import { useAppDispatch } from '../../../hooks/redux.hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux.hooks';
 
 // material-ui
 import Grid from '@mui/material/Grid';
@@ -21,19 +21,12 @@ import { loginAction } from '../../../redux/actions/auth.actions';
 
 const Login = (): JSX.Element => {
 
-    // hooks
-    // const history = useHistory();
-
-    // cookies
-    // const [, setCookie] = useCookies();
-    
-    // get oauth param
-    // var url = new URL(window.location.href);
-    // var oauth = url.searchParams.get("oauth");
+    // get state
+    const { error, message } = useAppSelector( state => state.user );
 
     // state
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [ email, setEmail ] = useState<string>('');
+    const [ password, setPassword ] = useState<string>('');
 
     const [ errForm, setErrForm ] = useState<boolean>(false);
     const [ errFormMessage, setErrFormMessage ] = useState<string>("");
@@ -42,7 +35,7 @@ const Login = (): JSX.Element => {
     const dispatch = useAppDispatch();
 
     const login = useCallback(
-        (email: string, password: string) => dispatch( loginAction({email, password}) ),
+        async (email: string, password: string) => await dispatch( loginAction({email, password}) ),
         [ dispatch ]
     );
 
@@ -59,14 +52,9 @@ const Login = (): JSX.Element => {
         };
 
        try {
-            const action = await login(email, password);
-            console.log(action)
-            // if (action.error!) {
-            //     setErrForm(true);
-            //     setErrFormMessage(action.error.message)
-            // }
+            await login(email, password);
        } catch (error: unknown) {
-            console.log(error)
+            return;
        }
     };
     
@@ -83,6 +71,16 @@ const Login = (): JSX.Element => {
                             LOGIN 
                         </Typography>
                     </Grid>
+
+
+                    {
+                        error ?
+                        <Grid item xs={12} className="p-3">
+                            <Alert severity="error" className="centered-alert"> 
+                                { message }
+                            </Alert>
+                        </Grid> : null
+                    }
 
                     {
                         errForm ?
