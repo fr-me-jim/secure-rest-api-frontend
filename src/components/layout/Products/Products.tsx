@@ -1,5 +1,5 @@
+import Swal from 'sweetalert2';
 import { useEffect, useCallback, useState } from 'react';
-// import Swal from 'sweetalert2';
 
 // reduz
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux.hooks';
@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import Product from './Product';
 
 // actions
-import { getProductsAction } from '../../../redux/actions/products.actions';
+import { getProductsAction, placeOrderAction } from '../../../redux/actions/products.actions';
 
 // interface
 import { ICartProductData } from 'src/interfaces/products.interface';
@@ -35,35 +35,39 @@ const Products = (): JSX.Element => {
         [ dispatch ],
     );
 
+    const placeOrder = useCallback(
+      (orderItems: ICartProductData[]) => dispatch( placeOrderAction(orderItems) ),
+      [dispatch],
+    );
+    
+
     useEffect(() => {
         const queryToAPI = () => getProducts();
         
         if (isAuthenticated) queryToAPI();
     }, [ getProducts, isAuthenticated ]);
 
-    const handleClickPurchase = () => {
-        console.log(cart)  
+    const handleClickPurchase = async () => {
+        const { value } = await Swal.fire({
+            icon: 'warning',
+            title: 'Purchase',
+            text: 'Are you sure that you wanna make this purchase?',
+            allowEnterKey: false,
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showCancelButton: true,
+            cancelButtonColor: '#91283f',
+            cancelButtonText: 'Back',
+            confirmButtonText: 'Confirm',
+            confirmButtonColor: "#2b6ca7"
+        });
+
+        try {
+            if (value) await placeOrder(cart);
+        } catch (error) {
+            return;
+        }
     };
-
-    // const handleClickPurchase = async () => {
-    //     const { value } = await Swal.fire({
-    //         icon: 'warning',
-    //         title: 'Delete File',
-    //         text: 'Are you sure that you wanna delete that file?',
-    //         allowEnterKey: false,
-    //         allowEscapeKey: false,
-    //         allowOutsideClick: false,
-    //         showCancelButton: true,
-    //         cancelButtonColor: '#91283f',
-    //         cancelButtonText: 'Back',
-    //         confirmButtonText: 'Confirm',
-    //         confirmButtonColor: "#2b6ca7"
-    //     });
-
-    //     if (value) console.log("hi");
-    //     // if (value) deleteFile(file_id);
-        
-    // };
 
     return (  
         <Grid container justifyContent="space-around" item xs={12}>

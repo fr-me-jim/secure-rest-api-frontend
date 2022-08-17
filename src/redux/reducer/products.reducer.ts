@@ -5,7 +5,8 @@ import { IProductsState } from '../../interfaces/products.interface';
 
 // actions
 import {
-    getProductsAction
+    getProductsAction,
+    placeOrderAction
 } from '../actions/products.actions';
 
 const initialState: IProductsState = {
@@ -37,21 +38,20 @@ const productsReducer: Slice<IProductsState> = createSlice({
             state.products = action.payload;
         });
 
-        // // SIGNIN ACTION
-        // builder.addCase(signinAction.pending, (state, _action) => {
-        //     state.loading = true;
-        // });
-        // builder.addCase(signinAction.rejected, (state, action) => {
-        //     state.loading = false;
-        //     state.error = true;
-        //     state.message = action.error.message || null;
-        // });
-        // builder.addCase(signinAction.fulfilled, (state, action) => {
-        //     state.loading = false;
-        //     state.isAuthenticated = true;
-        //     state.isAdmin = action.payload.privileges > 0;
-        //     state.data = action.payload;
-        // });
+        // PLACE ORDER ACTION
+        builder.addCase(placeOrderAction.pending, (state, _action) => {
+            state.loading = true;
+        });
+        builder.addCase(placeOrderAction.rejected, (state, action) => {
+            state.loading = false;
+            state.error = true;
+            state.message = action.error.message || null;
+        });
+        builder.addCase(placeOrderAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = false;
+            state.message = null;
+        });
 
         // // LOGOUT ACTION
         // builder.addCase(logoutAction.pending, (state, _action) => {
