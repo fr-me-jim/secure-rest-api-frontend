@@ -38,7 +38,7 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
             <Grid container component="header">
                 <Grid container justifyContent="center" item xs={12}>
                     <i className="fas fa-file text-primary fa-5x"></i>
-                    <CategoryIcon fontSize='50' className='text-primary'/>
+                    <CategoryIcon fontSize='large' className='text-primary'/>
                 </Grid>
                 
                 {/* <i class="fas fa-user-secret text-primary"></i> */}
