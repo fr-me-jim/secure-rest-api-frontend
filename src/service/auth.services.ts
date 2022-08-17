@@ -1,7 +1,7 @@
 import axiosInstance from './index';
 
 // interfaces
-import { IAuthUserData, ISigninUserData } from 'src/interfaces/auth.interface';
+import { IAuthUserData, ISigninUserData } from '../interfaces/auth.interface';
 import { AxiosError } from 'axios';
 
 export const postLoginService = async (email: string, password: string): Promise<IAuthUserData> => {

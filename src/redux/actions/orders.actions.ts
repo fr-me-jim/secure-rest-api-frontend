@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICartProductData } from 'src/interfaces/products.interface';
+import { ICartProductData } from '../../interfaces/products.interface';
 
 // interfaces
 // import type { IProductsData } from '../../interfaces/products.interface';

@@ -11,7 +11,7 @@ import Alert from '@mui/material/Alert';
 import Order from './Order';
 
 // actions
-import { getOrdersAction } from 'src/redux/actions/orders.actions';
+import { getOrdersAction } from '../../../redux/actions/orders.actions';
 
 const Orders = (): JSX.Element => {
 

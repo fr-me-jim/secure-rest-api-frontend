@@ -14,10 +14,10 @@ import Product from './Product';
 
 // actions
 import { getProductsAction } from '../../../redux/actions/products.actions';
-import { placeOrderAction } from 'src/redux/actions/orders.actions';
+import { placeOrderAction } from '../../../redux/actions/orders.actions';
 
 // interface
-import { ICartProductData } from 'src/interfaces/products.interface';
+import { ICartProductData } from '../../../interfaces/products.interface';
 
 const Products = (): JSX.Element => {
 

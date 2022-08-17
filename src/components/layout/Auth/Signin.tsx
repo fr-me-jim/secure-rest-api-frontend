@@ -20,7 +20,7 @@ import '../../../css/Auth.css';
 import { signinAction } from '../../../redux/actions/auth.actions';
 
 // interfaces
-import { ISigninUserData } from 'src/interfaces/auth.interface';
+import { ISigninUserData } from '../../../interfaces/auth.interface';
 
 
 const Login = () => {

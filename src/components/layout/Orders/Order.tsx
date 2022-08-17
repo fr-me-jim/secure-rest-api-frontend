@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 // interface
-import { IOrderData } from 'src/interfaces/orders.interface';
+import { IOrderData } from '../../../interfaces/orders.interface';
 
 const Order = ({ order }: { order: IOrderData }): JSX.Element => {
 
