@@ -15,7 +15,7 @@ import {
     AUTH_LOGIN,
     AUTH_SIGNIN,
     AUTH_LOGOUT
-} from "../types/auth.types";
+} from "../types";
 
 export const loginAction = createAsyncThunk(
     AUTH_LOGIN, 

@@ -33,7 +33,6 @@ const Routes = (): JSX.Element => {
                     <Signin />
                 </NotAuthRoute>
             } />
-            {/* <NotAuthRoute caseSensitive path="/login" element={ <Login /> } /> */}
             <Route caseSensitive path="/products" element={
                 <ProtectedRoute>
                     <Products />
@@ -44,14 +43,6 @@ const Routes = (): JSX.Element => {
                     <Orders />
                 </ProtectedRoute>
             } />
-            {/* <NotAuthRoute exact path="/signin" component={ Signin } />
-            
-
-            <ProtectedRoute exact path="/user/files" component={ UserFiles } />
-            <ProtectedRoute exact path="/files/public" component={ Files } />
-            <ProtectedRoute exact path="/upload" component={ UploadFile } />
-
-            <ProtectedAdminRoute exact path="/admin" component={ Admin } /> */}
         </Switch>
     );
 };
