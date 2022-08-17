@@ -18,7 +18,7 @@ const Products = (): JSX.Element => {
 
     // get state
     const { isAuthenticated } = useAppSelector(state => state.user);
-    const { products, error } = useAppSelector(state => state.products);
+    const { products, error, message } = useAppSelector(state => state.products);
 
     // dispatch
     const dispatch = useAppDispatch();
@@ -57,16 +57,16 @@ const Products = (): JSX.Element => {
     return (  
         <Grid container justifyContent="space-around" item xs={12}>
             {
-                error || !isAuthenticated ?
-                <Grid item xs={8}>
+                error ?
+                <Grid item xs={12}>
                     <Alert severity="warning" className="centered-alert"> 
-                        You must Log In to browse files!
+                        { message }
                     </Alert>
                 </Grid> : null
             }
             {
                 products && products.length === 0 &&
-                <Grid item xs={8}>
+                <Grid item xs={12}>
                     <Alert severity="info" className="centered-alert"> 
                         There are no products to browse yet.
                     </Alert>

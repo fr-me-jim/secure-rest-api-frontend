@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 // import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import CategoryIcon from '@mui/icons-material/Category';
 
 // interface
 import { IProductsData } from 'src/interfaces/products.interface';
@@ -37,6 +38,7 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
             <Grid container component="header">
                 <Grid container justifyContent="center" item xs={12}>
                     <i className="fas fa-file text-primary fa-5x"></i>
+                    <CategoryIcon fontSize='50' className='text-primary'/>
                 </Grid>
                 
                 {/* <i class="fas fa-user-secret text-primary"></i> */}
