@@ -101,14 +101,14 @@ const Navbar = (): JSX.Element => {
                         </NavLink>
                     }
 
-                    {/* {
+                    {
                         isAuthenticated &&
-                        <NavLink caseSensitive to="/upload"  className="nav-link p-0">
+                        <NavLink caseSensitive to="/orders"  className="nav-link p-0">
                             <Typography variant="body1" className="nav-link-text mx-1 px-1" >
-                                <b>Upload</b>
-                            </Typography>
+                                <b>Orders</b>
+                            </Typography> 
                         </NavLink>
-                    } */}
+                    }
 
                     {
                         isAuthenticated &&

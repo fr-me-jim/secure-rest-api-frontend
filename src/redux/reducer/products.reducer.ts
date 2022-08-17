@@ -5,8 +5,7 @@ import { IProductsState } from '../../interfaces/products.interface';
 
 // actions
 import {
-    getProductsAction,
-    placeOrderAction
+    getProductsAction
 } from '../actions/products.actions';
 
 const initialState: IProductsState = {
@@ -37,37 +36,6 @@ const productsReducer: Slice<IProductsState> = createSlice({
             state.loading = false;
             state.products = action.payload;
         });
-
-        // PLACE ORDER ACTION
-        builder.addCase(placeOrderAction.pending, (state, _action) => {
-            state.loading = true;
-        });
-        builder.addCase(placeOrderAction.rejected, (state, action) => {
-            state.loading = false;
-            state.error = true;
-            state.message = action.error.message || null;
-        });
-        builder.addCase(placeOrderAction.fulfilled, (state, action) => {
-            state.loading = false;
-            state.error = false;
-            state.message = null;
-        });
-
-        // // LOGOUT ACTION
-        // builder.addCase(logoutAction.pending, (state, _action) => {
-        //     state.loading = true;
-        // });
-        // builder.addCase(logoutAction.rejected, (state, action) => {
-        //     state.loading = false;
-        //     state.error = true;
-        //     state.message = action.error.message || null;
-        // });
-        // builder.addCase(logoutAction.fulfilled, (state, _action) => {
-        //     state.loading = false;
-        //     state.isAuthenticated = false;
-        //     state.isAdmin = false;
-        //     state.data = null;
-        // });
     }
 });
 

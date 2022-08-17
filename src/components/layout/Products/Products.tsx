@@ -13,7 +13,8 @@ import Button from '@mui/material/Button';
 import Product from './Product';
 
 // actions
-import { getProductsAction, placeOrderAction } from '../../../redux/actions/products.actions';
+import { getProductsAction } from '../../../redux/actions/products.actions';
+import { placeOrderAction } from 'src/redux/actions/orders.actions';
 
 // interface
 import { ICartProductData } from 'src/interfaces/products.interface';
@@ -26,6 +27,9 @@ const Products = (): JSX.Element => {
     // get state
     const { isAuthenticated } = useAppSelector(state => state.user);
     const { products, error, message } = useAppSelector(state => state.products);
+
+    const errorOrders = useAppSelector(state => state.orders.error);
+    const messageOrders = useAppSelector(state => state.orders.message);
 
     // dispatch
     const dispatch = useAppDispatch();
@@ -76,6 +80,14 @@ const Products = (): JSX.Element => {
                 <Grid item xs={12}>
                     <Alert severity="error" className="centered-alert"> 
                         { message }
+                    </Alert>
+                </Grid> : null
+            }
+            {
+                errorOrders ?
+                <Grid item xs={12}>
+                    <Alert severity="error" className="centered-alert"> 
+                        { messageOrders }
                     </Alert>
                 </Grid> : null
             }
