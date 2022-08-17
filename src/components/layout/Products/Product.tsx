@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // material-ui
 import Grid from '@mui/material/Grid';
-import Badge from '@mui/material/Badge';
+import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -33,10 +33,6 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
 
     // const handleClickAddToCart = async () => {
         
-    // };
-
-    // const handleClickRemoveFromCart = () => {
-    //     // downloadFile(file_id, filename, mimetype);  
     // };
     
     const handleClickAdd = (): void => {
@@ -68,7 +64,7 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
                 <Typography variant="body1" align="justify" className='py-2'>
                     { product.description }
                 </Typography>
-                <Badge className='bg-primary text-light' badgeContent={ product.category } />
+                <Chip className='bg-primary text-light' label={ product.category } />
             </Grid>
 
             <Grid container item xs={12} justifyContent="space-around">
@@ -78,7 +74,7 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
                     <AddIcon fontSize="medium" className='text-light'/>
                 </IconButton>
                 <input type="number" id="product-amount" name="product-amount"
-                    min={1} value={ amount }
+                    min={1} value={ amount } className="w-auto"
                 />
                 <IconButton className='app-btn-danger' aria-label='decrease-product-amount'
                     type='button' onClick={ handleClickRemove }

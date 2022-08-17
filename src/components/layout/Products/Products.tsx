@@ -74,7 +74,7 @@ const Products = (): JSX.Element => {
             }
             {
                 products.length !== 0 && products.map( product => (
-                    <Grid key={product.id} item xs={11} sm={10} md={6} lg={4} xl={2}>
+                    <Grid key={product.id} item xs={11} sm={8} md={6} lg={4} xl={3}>
                         <Product product={ product } />
                     </Grid>
                 ))
