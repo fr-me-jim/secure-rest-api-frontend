@@ -1,7 +1,7 @@
 import axiosInstance from './index';
 
 // interfaces
-import { IProductsData } from '../interfaces/products.interface';
+import { IGetProductsResponse, IProductsData } from '../interfaces/products.interface';
 import { AxiosError } from 'axios';
 
 export const getAllProductsService = async (): Promise<IProductsData[]> => {
@@ -12,7 +12,7 @@ export const getAllProductsService = async (): Promise<IProductsData[]> => {
             throw new AxiosError("Wrong Credentials!", `${response.status}`);
         }
 
-        return response.data;
+        return (response.data as IGetProductsResponse).products;
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
             if (error.code === '401') {
