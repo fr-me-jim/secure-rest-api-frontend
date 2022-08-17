@@ -273,7 +273,7 @@ input:-webkit-autofill:focus {
 
 /* ADMIN - PROFILE NAV CSS */
 .file-paper {
-  height: 35vh;
+  /* height: 35vh; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
