@@ -58,6 +58,10 @@ body {
   background-color: var(--secondary-color) !important;
 }
 
+.bg-danger {
+  background-color: var(--danger-color) !important;
+}
+
 .text-primary {
   color: var(--primary-color) !important;
 }

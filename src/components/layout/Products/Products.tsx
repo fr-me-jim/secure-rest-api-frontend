@@ -59,7 +59,7 @@ const Products = (): JSX.Element => {
             {
                 error ?
                 <Grid item xs={12}>
-                    <Alert severity="warning" className="centered-alert"> 
+                    <Alert severity="error" className="centered-alert"> 
                         { message }
                     </Alert>
                 </Grid> : null

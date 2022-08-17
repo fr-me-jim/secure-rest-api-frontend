@@ -31,7 +31,7 @@ const productsReducer: Slice<IProductsState> = createSlice({
             state.message = action.error.message || null;
         });
         builder.addCase(getProductsAction.fulfilled, (state, action) => {
-            state.error = true;
+            state.error = false;
             state.message = null;
             state.loading = false;
             state.products = action.payload;
