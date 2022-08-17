@@ -51,9 +51,9 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
                 <Typography variant="h5" align="center">
                     { product.name }
                 </Typography>
-                {/* <Typography variant="h6" align="center">
-                    { filename }
-                </Typography> */}
+                <Typography variant="body1" align="justify">
+                    { product.description }
+                </Typography>
             </Grid>
             
             <Grid container justifyContent="center" className="pt-2">
