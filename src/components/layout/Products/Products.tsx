@@ -8,6 +8,10 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux.hooks';
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import Badge from '@mui/material/Badge';
+
+// icons
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 // components
 import Product from './Product';
@@ -106,13 +110,21 @@ const Products = (): JSX.Element => {
             }
             {
                 products.length !== 0 && (
-                    <Grid container item xs={12} justifyContent="center" alignItems="center" className='py-4'>
-                        <Button className='app-btn-primary' onClick={ handleClickPurchase }
-                            type="button" variant="contained"
-                        >
-                            Purchase
-                        </Button>
-                    </Grid>
+                    <>
+                        <Grid container item xs={12} justifyContent="center" alignItems="center" className='py-4'>
+                            <Badge badgeContent={ cart.length } className="bg-primary text-light">
+                                <ShoppingCartIcon color='action' />
+                            </Badge>
+                        </Grid>
+
+                        <Grid container item xs={12} justifyContent="center" alignItems="center" className='py-4'>
+                            <Button className='app-btn-primary' onClick={ handleClickPurchase }
+                                type="button" variant="contained"
+                            >
+                                Purchase
+                            </Button>
+                        </Grid>
+                    </>
                 )
 
             }
