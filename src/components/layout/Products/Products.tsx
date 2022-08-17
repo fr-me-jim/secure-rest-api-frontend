@@ -92,7 +92,7 @@ const Products = (): JSX.Element => {
             }
             {
                 products.length !== 0 && (
-                    <Grid item xs={12} justifyContent="center" alignItems="center">
+                    <Grid container item xs={12} justifyContent="center" alignItems="center" className='py-4'>
                         <Button className='app-btn-primary' onClick={ handleClickPurchase }
                             type="button" variant="contained"
                         >
