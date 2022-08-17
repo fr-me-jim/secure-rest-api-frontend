@@ -46,8 +46,8 @@ const Products = (): JSX.Element => {
     useEffect(() => {
         const queryToAPI = () => getProducts();
         
-        if (isAuthenticated) queryToAPI();
-    }, [ getProducts, isAuthenticated ]);
+        if (isAuthenticated && !products.length) queryToAPI();
+    }, [ getProducts, isAuthenticated, products.length ]);
 
     const handleClickPurchase = async () => {
         const { value } = await Swal.fire({
