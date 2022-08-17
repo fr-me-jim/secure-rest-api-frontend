@@ -4,9 +4,9 @@ import { combineReducers } from 'redux';
 
 // REDUCERS //
 import authReducer from '../reducer/auth.reducer';
-// import filesReducer from 'redux/reducers/filesReducer';
+import productsReducer from '../reducer/products.reducer';
 
 export default combineReducers ({
     user: authReducer,
-    // files: filesReducer,
+    products: productsReducer,
 });

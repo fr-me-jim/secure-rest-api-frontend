@@ -4,7 +4,7 @@ import { Routes as Switch, Route } from 'react-router-dom';
 // routes
 import { 
     NotAuthRoute,
-    // ProtectedRoute,
+    ProtectedRoute,
     // ProtectedAdminRoute
 } from './Protected.routes';
 
@@ -12,7 +12,7 @@ import {
 import Login from '../layout/Auth/Login';
 import Signin from '../layout/Auth/Signin';
 // import Admin from 'components/layout/Admin/Admin';
-// import Files from 'components/layout/Files/Files';
+import Products from '../layout/Products/Products';
 // import UserFiles from 'components/layout/Files/UserFiles';
 // import UploadFile from 'components/layout/Files/UploadFile';
 import Home from '../layout/Home';
@@ -33,7 +33,13 @@ const Routes = (): JSX.Element => {
                 </NotAuthRoute>
             } />
             {/* <NotAuthRoute caseSensitive path="/login" element={ <Login /> } /> */}
+            <Route caseSensitive path="/products" element={
+                <ProtectedRoute>
+                    <Products />
+                </ProtectedRoute>
+            } />
             {/* <NotAuthRoute exact path="/signin" component={ Signin } />
+            
 
             <ProtectedRoute exact path="/user/files" component={ UserFiles } />
             <ProtectedRoute exact path="/files/public" component={ Files } />

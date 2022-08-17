@@ -84,9 +84,9 @@ const Navbar = (): JSX.Element => {
 
                     {
                         isAuthenticated &&
-                        <NavLink caseSensitive to="/files/public"  className="nav-link p-0">
+                        <NavLink caseSensitive to="/products"  className="nav-link p-0">
                             <Typography variant="body1" className="nav-link-text mx-1 px-1" >
-                                <b>Public Files</b>
+                                <b>Products</b>
                             </Typography>
                         </NavLink>
                     }
@@ -94,21 +94,21 @@ const Navbar = (): JSX.Element => {
 
                     {
                         isAuthenticated &&
-                        <NavLink caseSensitive to="/user/files"  className="nav-link p-0">
+                        <NavLink caseSensitive to="/profile"  className="nav-link p-0">
                             <Typography variant="body1" className="nav-link-text mx-1 px-1" >
-                                <b>My files</b>
+                                <b>Profile</b>
                             </Typography>
                         </NavLink>
                     }
 
-                    {
+                    {/* {
                         isAuthenticated &&
                         <NavLink caseSensitive to="/upload"  className="nav-link p-0">
                             <Typography variant="body1" className="nav-link-text mx-1 px-1" >
                                 <b>Upload</b>
                             </Typography>
                         </NavLink>
-                    }
+                    } */}
 
                     {
                         isAuthenticated &&
