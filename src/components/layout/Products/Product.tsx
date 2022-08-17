@@ -55,11 +55,6 @@ const Product = ({ product, currentCart, setCartHandler }: IProductProps): JSX.E
                     <i className="fas fa-file text-primary fa-5x"></i>
                     <CategoryIcon fontSize='large' className='text-primary'/>
                 </Grid>
-                
-                {/* <i class="fas fa-user-secret text-primary"></i> */}
-                <Grid container justifyContent="center" item xs={12}>
-                    {/* { !isImage && <img src={url} alt={filename} height={150} /> } */}
-                </Grid>
             </Grid>
 
             <Grid container direction="column" justifyContent="center" alignItems="flex-start" className="py-2 px-4" item xs={12}>
@@ -70,6 +65,9 @@ const Product = ({ product, currentCart, setCartHandler }: IProductProps): JSX.E
                     { product.description }
                 </Typography>
                 <Chip className='bg-primary text-light' label={ product.category } />
+                <Typography variant="h5" align="center" className='py-4 align-self-center'>
+                    <b>${ product.price }</b>
+                </Typography>
             </Grid>
 
             <Grid container item xs={12} justifyContent="space-around" alignItems="center" className='px-5'>

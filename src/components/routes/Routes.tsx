@@ -12,6 +12,7 @@ import {
 import Login from '../layout/Auth/Login';
 import Signin from '../layout/Auth/Signin';
 // import Admin from 'components/layout/Admin/Admin';
+import Orders from '../layout/Orders/Orders';
 import Products from '../layout/Products/Products';
 // import UserFiles from 'components/layout/Files/UserFiles';
 // import UploadFile from 'components/layout/Files/UploadFile';
@@ -36,6 +37,11 @@ const Routes = (): JSX.Element => {
             <Route caseSensitive path="/products" element={
                 <ProtectedRoute>
                     <Products />
+                </ProtectedRoute>
+            } />
+            <Route caseSensitive path="/orders" element={
+                <ProtectedRoute>
+                    <Orders />
                 </ProtectedRoute>
             } />
             {/* <NotAuthRoute exact path="/signin" component={ Signin } />

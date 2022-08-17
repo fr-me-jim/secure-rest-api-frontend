@@ -27,9 +27,7 @@ const Products = (): JSX.Element => {
     // get state
     const { isAuthenticated } = useAppSelector(state => state.user);
     const { products, error, message } = useAppSelector(state => state.products);
-
-    const errorOrders = useAppSelector(state => state.orders.error);
-    const messageOrders = useAppSelector(state => state.orders.message);
+    const { error: errorOrders, message: messageOrders } = useAppSelector(state => state.orders);
 
     // dispatch
     const dispatch = useAppDispatch();
