@@ -88,7 +88,10 @@ const Products = (): JSX.Element => {
                     <Grid key={product.id} item xs={11} sm={8} md={6} lg={4} xl={3}>
                         <Product product={ product } currentCart={ cart } setCartHandler={ setCart }/>
                     </Grid>
-                )) && (
+                ))
+            }
+            {
+                products.length !== 0 && (
                     <Grid item xs={12} justifyContent="center" alignItems="center">
                         <Button className='app-btn-primary' onClick={ handleClickPurchase }
                             type="button" variant="contained"
@@ -97,9 +100,8 @@ const Products = (): JSX.Element => {
                         </Button>
                     </Grid>
                 )
+
             }
-
-
         </Grid>
     );
 };
