@@ -57,8 +57,8 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
                 </Grid>
             </Grid>
 
-            <Grid container direction="column" justifyContent="center" className="pt-2" item xs={12}>
-                <Typography variant="h5" align="center" className='py-2'>
+            <Grid container direction="column" justifyContent="center" alignItems="flex-start" className="pt-2" item xs={12}>
+                <Typography variant="h5" align="center" className='py-2 align-self-center'>
                     <b>{ product.name }</b>
                 </Typography>
                 <Typography variant="body1" align="justify" className='py-2'>
@@ -67,7 +67,7 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
                 <Chip className='bg-primary text-light' label={ product.category } />
             </Grid>
 
-            <Grid container item xs={12} justifyContent="space-around">
+            <Grid container item xs={12} justifyContent="space-around" alignItems="center">
                 <IconButton className='app-btn-primary' aria-label='increase-product-amount'
                     type='button' onClick={ handleClickAdd }
                 >
