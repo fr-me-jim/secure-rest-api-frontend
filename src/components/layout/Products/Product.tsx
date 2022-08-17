@@ -15,12 +15,12 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CategoryIcon from '@mui/icons-material/Category';
 
 // interface
-import { IProductsData } from 'src/interfaces/products.interface';
+import { ICartProductData, IProductProps } from 'src/interfaces/products.interface';
 
 // actions
 // import { deleteFileAction, getDownloadFileAction } from "redux/actions/filesActions";
 
-const Product = ({ product }: { product: IProductsData }): JSX.Element => {
+const Product = ({ product, currentCart, setCartHandler }: IProductProps): JSX.Element => {
 
     // state
     const [amount, setAmount] = useState(0);
@@ -31,9 +31,14 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
     // const deleteFile =  id => dispatch( deleteFileAction(id) );
     // const downloadFile =  (id, filename, type) => dispatch( getDownloadFileAction(id, filename, type) );
 
-    // const handleClickAddToCart = async () => {
-        
-    // };
+    const handleClickAddToCart = (): void => {
+        const productPurchase: ICartProductData = {
+            product_id: product.id,
+            price: product.price,
+            amount
+        };
+        setCartHandler([ ...currentCart, productPurchase ]);
+    };
     
     const handleClickAdd = (): void => {
         setAmount(amount+1);
@@ -83,12 +88,22 @@ const Product = ({ product }: { product: IProductsData }): JSX.Element => {
                 </IconButton>
             </Grid>
             
-            <Grid container justifyContent="center" className="pt-2">
-                <Button type="button" variant="contained"
-                    className="app-btn-primary w-50"
-                    // onClick={ handleClickDownload }
-                > Add to cart </Button>
-            </Grid>
+            {
+                amount ?
+                <Grid container justifyContent="center" className="pt-2">
+                    <Button type="button" variant="contained"
+                        className="app-btn-primary w-50"
+                        onClick={ handleClickAddToCart }
+                    > Add to cart </Button>
+                </Grid>
+                :
+                <Grid container justifyContent="center" className="pt-2">
+                    <Button type="button" variant="contained" disabled
+                        className="app-btn-secondary w-50"
+                        // onClick={ handleClickDownload }
+                    > Add to cart </Button>
+                </Grid>
+            }
         </Paper>
     );
 };

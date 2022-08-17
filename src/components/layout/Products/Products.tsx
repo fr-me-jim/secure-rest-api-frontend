@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 // import Swal from 'sweetalert2';
 
 // reduz
@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux.hooks';
 // material-ui
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
 
 // components
 import Product from './Product';
@@ -14,7 +15,13 @@ import Product from './Product';
 // actions
 import { getProductsAction } from '../../../redux/actions/products.actions';
 
+// interface
+import { ICartProductData } from 'src/interfaces/products.interface';
+
 const Products = (): JSX.Element => {
+
+    // state
+    const [cart, setCart] = useState<ICartProductData[]>([]);
 
     // get state
     const { isAuthenticated } = useAppSelector(state => state.user);
@@ -33,6 +40,10 @@ const Products = (): JSX.Element => {
         
         if (isAuthenticated) queryToAPI();
     }, [ getProducts, isAuthenticated ]);
+
+    const handleClickPurchase = () => {
+        console.log(cart)  
+    };
 
     // const handleClickPurchase = async () => {
     //     const { value } = await Swal.fire({
@@ -75,10 +86,20 @@ const Products = (): JSX.Element => {
             {
                 products.length !== 0 && products.map( product => (
                     <Grid key={product.id} item xs={11} sm={8} md={6} lg={4} xl={3}>
-                        <Product product={ product } />
+                        <Product product={ product } currentCart={ cart } setCartHandler={ setCart }/>
                     </Grid>
-                ))
+                )) && (
+                    <Grid item xs={12} justifyContent="center" alignItems="center">
+                        <Button className='app-btn-primary' onClick={ handleClickPurchase }
+                            type="button" variant="contained"
+                        >
+                            Purchase
+                        </Button>
+                    </Grid>
+                )
             }
+
+
         </Grid>
     );
 };

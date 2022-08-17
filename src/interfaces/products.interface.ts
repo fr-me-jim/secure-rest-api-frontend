@@ -23,3 +23,16 @@ export interface IProductsState {
     product: IProductsData | null;
     products: IProductsData[];
 }
+
+export interface ICartProductData {
+    product_id: string;
+    price: number;
+    amount: number;
+};
+
+// JSX
+export interface IProductProps {
+    product: IProductsData; 
+    currentCart: ICartProductData[];
+    setCartHandler: React.Dispatch<React.SetStateAction<ICartProductData[]>>;
+}
