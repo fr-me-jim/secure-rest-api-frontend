@@ -112,7 +112,7 @@ const Products = (): JSX.Element => {
                 products.length !== 0 && (
                     <>
                         <Grid container item xs={12} justifyContent="center" alignItems="center" className='py-4'>
-                            <Badge badgeContent={ cart.length } className="bg-primary text-light">
+                            <Badge badgeContent={ cart.length } color="primary">
                                 <ShoppingCartIcon color='action' />
                             </Badge>
                         </Grid>
