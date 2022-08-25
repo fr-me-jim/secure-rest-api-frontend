@@ -27,6 +27,11 @@ export const getCSRFTokenService = async (): Promise<void> => {
 };
 
 export const postLoginService = async (email: string, password: string): Promise<IAuthUserData> => {
+    const { 
+        'XSRF-TOKEN': csrf, 
+        ...rest 
+    } = axiosInstance.defaults.headers.post;
+    axiosInstance.defaults.headers.post = rest;
     console.log(axiosInstance.defaults.headers.post)
     try {
         const response = await axiosInstance.post('/auth/login', {
