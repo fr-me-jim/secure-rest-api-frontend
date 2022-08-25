@@ -43,7 +43,6 @@ export const postLoginService = async (email: string, password: string): Promise
             ...rest 
         } = axiosInstance.defaults.headers.post;
         axiosInstance.defaults.headers.post = rest;
-        console.log(axiosInstance.defaults.headers.post)
 
         return response.data;
     } catch (error: unknown) {
@@ -67,7 +66,6 @@ export const postSigninService = async (userSigninData: ISigninUserData): Promis
             ...rest 
         } = axiosInstance.defaults.headers.post;
         axiosInstance.defaults.headers.post = rest;
-        console.log(axiosInstance.defaults.headers.post)
 
         return response.data;
     } catch (error: unknown) {
