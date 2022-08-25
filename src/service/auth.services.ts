@@ -27,12 +27,6 @@ export const getCSRFTokenService = async (): Promise<void> => {
 };
 
 export const postLoginService = async (email: string, password: string): Promise<IAuthUserData> => {
-    const { 
-        'XSRF-TOKEN': csrf, 
-        ...rest 
-    } = axiosInstance.defaults.headers.post;
-    axiosInstance.defaults.headers.post = rest;
-    console.log(axiosInstance.defaults.headers.post)
     try {
         const response = await axiosInstance.post('/auth/login', {
             email,
@@ -42,6 +36,14 @@ export const postLoginService = async (email: string, password: string): Promise
         if (response.status === 401) {
             throw new AxiosError("Wrong Credentials!", `${response.status}`);
         }
+
+        // remove csrf header
+        const { 
+            'XSRF-TOKEN': csrf, 
+            ...rest 
+        } = axiosInstance.defaults.headers.post;
+        axiosInstance.defaults.headers.post = rest;
+        console.log(axiosInstance.defaults.headers.post)
 
         return response.data;
     } catch (error: unknown) {
@@ -58,6 +60,14 @@ export const postLoginService = async (email: string, password: string): Promise
 export const postSigninService = async (userSigninData: ISigninUserData): Promise<IAuthUserData> => {
     try {
         const response = await axiosInstance.post('/auth/signin', userSigninData);
+
+        // remove csrf header
+        const { 
+            'XSRF-TOKEN': csrf, 
+            ...rest 
+        } = axiosInstance.defaults.headers.post;
+        axiosInstance.defaults.headers.post = rest;
+        console.log(axiosInstance.defaults.headers.post)
 
         return response.data;
     } catch (error: unknown) {
