@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 // import { useCookies } from 'react-cookie';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux.hooks';
 
@@ -19,6 +19,9 @@ import '../../../css/Auth.css';
 // actions
 import { loginAction } from '../../../redux/actions/auth.actions';
 
+// service
+import { getCSRFTokenService } from "../../../service/auth.services";
+
 const Login = (): JSX.Element => {
 
     // get state
@@ -38,6 +41,13 @@ const Login = (): JSX.Element => {
         async (email: string, password: string) => await dispatch( loginAction({email, password}) ),
         [ dispatch ]
     );
+
+    const getCRSFToken = useCallback(
+        getCSRFTokenService,
+        [],
+    );
+    
+     
 
     const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -61,6 +71,12 @@ const Login = (): JSX.Element => {
     const handleClickLoginGoogle = () => {
         window.open("https://ias.jediupc.com/api/auth/google", "_self");
     };
+
+    useEffect(() => {
+        const queryToAPI = async () => await getCRSFToken();
+
+        queryToAPI();
+    }, [ getCRSFToken ]);
 
     return (  
         <Grid container item xs={12} md={10} lg={8} xl={6} className="w-100">
