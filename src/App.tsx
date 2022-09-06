@@ -20,9 +20,9 @@ const App: FC = () => {
   );
 
   useEffect(() => {
-    const queryToAPI = async () => await getCRSFToken();
+    // const queryToAPI = async () => await getCRSFToken();
   
-    queryToAPI();
+    // queryToAPI();
   }, [ getCRSFToken ]);
   
   return (
