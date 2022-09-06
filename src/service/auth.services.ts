@@ -37,12 +37,12 @@ export const postLoginService = async (email: string, password: string): Promise
             throw new AxiosError("Wrong Credentials!", `${response.status}`);
         }
 
-        // // remove csrf header
-        // const { 
-        //     'XSRF-TOKEN': csrf, 
-        //     ...rest 
-        // } = axiosInstance.defaults.headers.post;
-        // axiosInstance.defaults.headers.post = rest;
+        // remove csrf header
+        const { 
+            'XSRF-TOKEN': csrf, 
+            ...rest 
+        } = axiosInstance.defaults.headers.post;
+        axiosInstance.defaults.headers.post = rest;
 
         return response.data;
     } catch (error: unknown) {
@@ -60,12 +60,12 @@ export const postSigninService = async (userSigninData: ISigninUserData): Promis
     try {
         const response = await axiosInstance.post('/auth/signin', userSigninData);
 
-        // // remove csrf header
-        // const { 
-        //     'XSRF-TOKEN': csrf, 
-        //     ...rest 
-        // } = axiosInstance.defaults.headers.post;
-        // axiosInstance.defaults.headers.post = rest;
+        // remove csrf header
+        const { 
+            'XSRF-TOKEN': csrf, 
+            ...rest 
+        } = axiosInstance.defaults.headers.post;
+        axiosInstance.defaults.headers.post = rest;
 
         return response.data;
     } catch (error: unknown) {
